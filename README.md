@@ -1,2 +1,2 @@
 # Haskell-Hop-Idle
-haskell hop inspired idle game
+i like em big, i like em chunkay
