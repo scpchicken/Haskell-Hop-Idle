@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://xw6e02d4uj7d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dn1dm"]
+bg_color = Color(0.820158, 0.0664479, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x866x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i265s"]
+bg_color = Color(0, 0.77, 0.295167, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25uej"]
+bg_color = Color(0, 0.866667, 0.333333, 1)
+
+[resource]
+default_font_size = 50
+Button/styles/disabled = SubResource("StyleBoxFlat_dn1dm")
+Button/styles/focus = SubResource("StyleBoxEmpty_x866x")
+Button/styles/hover = SubResource("StyleBoxFlat_i265s")
+Button/styles/normal = SubResource("StyleBoxFlat_25uej")
