@@ -12,7 +12,7 @@ content_margin_top = 50.0
 bg_color = Color(0.0675, 0, 0.27, 1)
 
 [resource]
-RichTextLabel/font_sizes/normal_font_size = 100
+RichTextLabel/font_sizes/normal_font_size = 75
 RichTextLabel/styles/background = SubResource("StyleBoxEmpty_8ejpv")
 RichTextLabel/styles/fill = SubResource("StyleBoxEmpty_0fnnp")
 RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_xdr6l")

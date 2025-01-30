@@ -73,27 +73,12 @@ func reset_var():
 			sprite.curr_pos = 1
 			sprite.vel_x = 0
 			sprite.vel_y = 0
-			#JUMP.append(false)
-			#CURR_POS.append(1)
-			#VEL_X.append(0)
-			#VEL_Y.append(0)
-			#DIR.append(-1)
 			
 			if sprite.get_node("Sprite").flip_h:
 				sprite.dir = 1
 			else:
 				sprite.dir = -1
 			ind += 1
-		
-	#ind = 0
-	#for button in $HBoxHop.get_children():
-		#button.disabled = false
-		#button.ind = ind
-		#
-		#
-		#
-		#ind += 1
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -107,7 +92,7 @@ func _process(delta: float) -> void:
 				jump($SpriteList.get_children()[i])
 		if Input.is_key_pressed(KEY_SPACE):
 			for i in range(100):
-				if HOP_COUNT >= PHANTOM_HOP_PRICE:
+				if HOP_COUNT >= PHANTOM_HOP_PRICE and HASKELL_COUNT > PHANTOM_HOP_UPGRADE:
 					_phantom_hop()
 				if HOP_COUNT >= MAKE_FRIEND_PRICE:
 					_make_friend()
@@ -244,7 +229,7 @@ func _phantom_hop():
 
 func _make_friend():
 	if HASKELL_COUNT == 1:
-		$Tip.text = "Maybe the real treasure was the friends we made along the way."
+		$Tip.text = "Maybe the real treasure was the friends we made along the way"
 		$Tip.show()
 		$Tip/Button.disabled = true
 		$Tip/Timer.start()
@@ -281,7 +266,7 @@ func _qwerty_hop():
 		#$HBoxUpgrade/PhantomHop.hide()
 
 func _boss_battle():
-	$Tip.text = "A monad is a monoid in a category of endofunctors."
+	$Tip.text = "A monad is a monoid in a category of endofunctors"
 	$Tip.show()
 	$Tip/Button.disabled = true
 	$Tip/Timer.start()
