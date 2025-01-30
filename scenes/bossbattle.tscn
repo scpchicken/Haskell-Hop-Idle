@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://b38kik26wmve5"]
+
+[ext_resource type="Texture2D" uid="uid://b17oaw2331jd" path="res://assets/haskell.png" id="1_xqc40"]
+[ext_resource type="Script" path="res://scripts/boss.gd" id="2_j8tty"]
+
+[sub_resource type="Theme" id="Theme_euoo0"]
+default_font_size = 50
+
+[node name="Bossbattle2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -400.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HopCount" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = SubResource("Theme_euoo0")
+bbcode_enabled = true
+text = "[center]You Win (for now)
+Currently WIP[/center]"
+
+[node name="Boss" type="Sprite2D" parent="."]
+texture = ExtResource("1_xqc40")
+script = ExtResource("2_j8tty")
+
+[node name="Timer" type="Timer" parent="Boss"]
+
+[connection signal="timeout" from="Boss/Timer" to="Boss" method="_on_timer_timeout"]

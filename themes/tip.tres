@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://df3q07kuashjf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ejpv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fnnp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xdr6l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr07g"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+bg_color = Color(0.0675, 0, 0.27, 1)
+
+[resource]
+RichTextLabel/font_sizes/normal_font_size = 100
+RichTextLabel/styles/background = SubResource("StyleBoxEmpty_8ejpv")
+RichTextLabel/styles/fill = SubResource("StyleBoxEmpty_0fnnp")
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_xdr6l")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_cr07g")

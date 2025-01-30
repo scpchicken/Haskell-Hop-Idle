@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbkhrvb01swa3"]
+[gd_scene load_steps=9 format=3 uid="uid://dbkhrvb01swa3"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_iivri"]
+[ext_resource type="Theme" uid="uid://df3q07kuashjf" path="res://themes/tip.tres" id="2_bgeu3"]
 [ext_resource type="Texture2D" uid="uid://b17oaw2331jd" path="res://assets/haskell.png" id="2_s1wvl"]
-[ext_resource type="Script" path="res://scenes/button.gd" id="3_5bypq"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="3_5bypq"]
 [ext_resource type="Theme" uid="uid://xw6e02d4uj7d" path="res://themes/button.tres" id="3_h5ree"]
-[ext_resource type="Script" path="res://scenes/sprite.gd" id="4_pdkb4"]
+[ext_resource type="Script" path="res://scripts/sprite.gd" id="4_pdkb4"]
 [ext_resource type="Theme" uid="uid://b2arbi2hjyes0" path="res://themes/upgrade_button.tres" id="6_cawmk"]
 
 [sub_resource type="Theme" id="Theme_g713n"]
@@ -18,6 +19,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iivri")
+
+[node name="SpriteList" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite" type="MarginContainer" parent="SpriteList"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 320.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(-160, -160)
+script = ExtResource("4_pdkb4")
+
+[node name="Sprite" type="TextureRect" parent="SpriteList/Sprite"]
+layout_mode = 2
+texture = ExtResource("2_s1wvl")
+stretch_mode = 4
+
+[node name="Timer" type="Timer" parent="SpriteList/Sprite"]
+wait_time = 3.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HopCount" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = SubResource("Theme_g713n")
+bbcode_enabled = true
+text = "test text"
 
 [node name="BoxHop" type="HFlowContainer" parent="."]
 layout_mode = 1
@@ -41,76 +80,77 @@ theme = ExtResource("3_h5ree")
 text = "Hop"
 script = ExtResource("3_5bypq")
 
-[node name="SpriteList" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Sprite" type="MarginContainer" parent="SpriteList"]
-layout_mode = 0
-offset_right = 320.0
-offset_bottom = 320.0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(-160, -160)
-script = ExtResource("4_pdkb4")
-
-[node name="Sprite" type="TextureRect" parent="SpriteList/Sprite"]
-layout_mode = 2
-texture = ExtResource("2_s1wvl")
-stretch_mode = 4
-
-[node name="Timer" type="Timer" parent="SpriteList/Sprite"]
-wait_time = 3.0
-
-[node name="HopCount" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -302.0
-offset_right = 302.0
-offset_bottom = 184.0
-grow_horizontal = 2
-theme = SubResource("Theme_g713n")
-bbcode_enabled = true
-text = "test text"
-
 [node name="HBoxUpgrade" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -206.0
-offset_top = -50.0
-offset_right = 206.0
+offset_left = -674.0
+offset_top = -100.0
+offset_right = 674.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
 [node name="PhantomHop" type="Button" parent="HBoxUpgrade"]
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("6_cawmk")
 text = "Phantom Hop PLACEHOLDER"
 
 [node name="MakeFriend" type="Button" parent="HBoxUpgrade"]
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("6_cawmk")
 text = "Add Friend PLACEHOLDER"
 
-[node name="Button2" type="Button" parent="HBoxUpgrade"]
-visible = false
-custom_minimum_size = Vector2(200, 100)
+[node name="QWERTYHop" type="Button" parent="HBoxUpgrade"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme = ExtResource("6_cawmk")
 text = "QWERTY Hop PLACEHOLDER"
 
-[node name="Button3" type="Button" parent="HBoxUpgrade"]
-visible = false
-custom_minimum_size = Vector2(200, 100)
+[node name="BossBattle" type="Button" parent="HBoxUpgrade"]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+theme = ExtResource("6_cawmk")
 text = "Boss Battle PLACEHOLDER"
 
+[node name="Tip" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bgeu3")
+bbcode_enabled = true
+text = "lkjawekl;rjlwekjr;klaewr"
+
+[node name="Button" type="Button" parent="Tip"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -144.0
+offset_right = 152.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_h5ree")
+text = "ok boomer"
+
+[node name="Timer" type="Timer" parent="Tip"]
+
 [connection signal="timeout" from="SpriteList/Sprite/Timer" to="SpriteList/Sprite" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="BoxHop/Button" to="BoxHop/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BoxHop/Button" to="BoxHop/Button" method="_on_mouse_exited"]
+[connection signal="button_down" from="Tip/Button" to="." method="_on_button_button_down"]
+[connection signal="timeout" from="Tip/Timer" to="." method="_on_timer_timeout"]
