@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ugs4owl84ngh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi2nh"]
+bg_color = Color(0.984658, 0.000433369, 0.911915, 1)
+
+[resource]
+default_font_size = 50
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_vi2nh")

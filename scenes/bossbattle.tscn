@@ -1,41 +1,345 @@
-[gd_scene load_steps=4 format=3 uid="uid://b38kik26wmve5"]
+[gd_scene load_steps=27 format=3 uid="uid://b38kik26wmve5"]
 
-[ext_resource type="Texture2D" uid="uid://b17oaw2331jd" path="res://assets/haskell.png" id="1_xqc40"]
+[ext_resource type="Script" path="res://scripts/color_rect.gd" id="1_8mrsl"]
+[ext_resource type="Texture2D" uid="uid://cl5ic6m358gpe" path="res://sprites/java.png" id="1_jndl2"]
+[ext_resource type="Theme" uid="uid://xw6e02d4uj7d" path="res://themes/button.tres" id="1_q1vaf"]
+[ext_resource type="AudioStream" uid="uid://c7r4gge1kgelv" path="res://audio/Mega Man 2 (NES) Music - Wily Fortress 1.mp3" id="1_vyrp5"]
+[ext_resource type="Texture2D" uid="uid://b17oaw2331jd" path="res://sprites/haskell.png" id="1_xqc40"]
+[ext_resource type="Texture2D" uid="uid://dpnm3iwsvc81i" path="res://sprites/null.png" id="2_20wg4"]
 [ext_resource type="Script" path="res://scripts/boss.gd" id="2_j8tty"]
+[ext_resource type="Script" path="res://scripts/note.gd" id="3_iet0k"]
+[ext_resource type="Script" path="res://scripts/null.gd" id="3_o3mpo"]
+[ext_resource type="Theme" uid="uid://ugs4owl84ngh" path="res://themes/sync.tres" id="4_galmh"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_p78hp"]
+[ext_resource type="Texture2D" uid="uid://ccpeegby553fo" path="res://sprites/platform.png" id="5_rrqj1"]
+[ext_resource type="Texture2D" uid="uid://c4h0odfsfdimc" path="res://sprites/coq.png" id="6_1p1dp"]
+[ext_resource type="Script" path="res://scripts/platform.gd" id="6_7shqx"]
+[ext_resource type="Texture2D" uid="uid://cljk5y0dvmlo5" path="res://sprites/elm.png" id="7_26fcc"]
+[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="7_p0nca"]
+[ext_resource type="Texture2D" uid="uid://cwidw6tvceddb" path="res://sprites/idris.png" id="8_jen13"]
+[ext_resource type="Texture2D" uid="uid://hdgs32q5lj43" path="res://sprites/purescript.png" id="9_r626e"]
+[ext_resource type="Texture2D" uid="uid://bu6gmwj6taivw" path="res://sprites/agda.png" id="10_7lc1l"]
+[ext_resource type="Theme" uid="uid://df3q07kuashjf" path="res://themes/tip.tres" id="17_b6oqq"]
+[ext_resource type="AudioStream" uid="uid://bjw53j4vh33y7" path="res://audio/Roblox Death Sound - OOF  Sound Effect HD - HomeMadeSoundEffects.mp3" id="18_fdwgk"]
 
-[sub_resource type="Theme" id="Theme_euoo0"]
-default_font_size = 50
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg1pa"]
 
-[node name="Bossbattle2" type="Control"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_43qex"]
+radius = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bioob"]
+size = Vector2(288, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ro2qx"]
+size = Vector2(792, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om6of"]
+size = Vector2(768, 64)
+
+[node name="BossBattle" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_vyrp5")
+volume_db = -20.211
+
+[node name="Null" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(336, -224)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_20wg4")
+script = ExtResource("3_o3mpo")
+
+[node name="Area2D" type="Area2D" parent="Null"]
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Null/Area2D"]
+shape = SubResource("CircleShape2D_cg1pa")
+
+[node name="Note" type="Sprite2D" parent="."]
+position = Vector2(1688, 607)
+texture = ExtResource("6_1p1dp")
+offset = Vector2(10, 0)
+script = ExtResource("3_iet0k")
+
+[node name="Area2D" type="Area2D" parent="Note"]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/Area2D"]
+shape = SubResource("CircleShape2D_43qex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -400.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 73.0
 grow_horizontal = 2
-grow_vertical = 2
 alignment = 1
 
-[node name="HopCount" type="RichTextLabel" parent="HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme = SubResource("Theme_euoo0")
+theme = ExtResource("1_q1vaf")
+
+[node name="Attack" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1500, 400)
+layout_mode = 2
+theme = ExtResource("1_q1vaf")
 bbcode_enabled = true
-text = "[center]You Win (for now)
-Currently WIP[/center]"
+text = "[center]1 =
+1[/center]"
+
+[node name="Timer" type="Timer" parent="VBoxContainer/Attack"]
 
 [node name="Boss" type="Sprite2D" parent="."]
-texture = ExtResource("1_xqc40")
+position = Vector2(512, 368)
+texture = ExtResource("1_jndl2")
+centered = false
+offset = Vector2(-425, -293)
 script = ExtResource("2_j8tty")
 
 [node name="Timer" type="Timer" parent="Boss"]
 
+[node name="TimerNull" type="Timer" parent="Boss"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 48.0
+offset_right = 736.0
+offset_bottom = 75.0
+value = 100.0
+script = ExtResource("7_p0nca")
+
+[node name="Player" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xqc40")
+script = ExtResource("4_p78hp")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+collision_layer = 193
+collision_mask = 193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bioob")
+
+[node name="Platform" type="Sprite2D" parent="."]
+position = Vector2(132, 123)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_rrqj1")
+script = ExtResource("6_7shqx")
+
+[node name="1" type="Sprite2D" parent="Platform"]
+position = Vector2(-328, 0)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("6_1p1dp")
+
+[node name="2" type="Sprite2D" parent="Platform"]
+position = Vector2(-160, 0)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("10_7lc1l")
+
+[node name="3" type="Sprite2D" parent="Platform"]
+position = Vector2(-16, 0)
+texture = ExtResource("8_jen13")
+
+[node name="4" type="Sprite2D" parent="Platform"]
+position = Vector2(112, 24)
+scale = Vector2(0.46, 0.46)
+texture = ExtResource("7_26fcc")
+
+[node name="5" type="Sprite2D" parent="Platform"]
+position = Vector2(280, 0)
+texture = ExtResource("9_r626e")
+
+[node name="Area2D" type="Area2D" parent="Platform"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Area2D"]
+position = Vector2(-20, 0)
+shape = SubResource("RectangleShape2D_ro2qx")
+
+[node name="Win" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_b6oqq")
+bbcode_enabled = true
+text = "[center]You Win!
+(More features soon :D)"
+
+[node name="Button" type="Button" parent="Win"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -31.0
+offset_right = 44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_q1vaf")
+text = "Fight Boss Again"
+
+[node name="Timer" type="Timer" parent="Win"]
+
+[node name="Tip" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_b6oqq")
+bbcode_enabled = true
+text = "Turn on sound
+W/S to move platform
+Space to use attack
+A/D to increase attack damage"
+
+[node name="Sound" type="Button" parent="Tip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 40.0
+offset_right = 152.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q1vaf")
+text = "test sound"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Tip/Sound"]
+stream = ExtResource("18_fdwgk")
+volume_db = -10.3
+
+[node name="Button" type="Button" parent="Tip"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -72.0
+offset_right = 152.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_q1vaf")
+disabled = true
+text = "ok boomer"
+
+[node name="Timer" type="Timer" parent="Tip"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 100
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.495
+anchor_top = 0.52
+anchor_right = 0.495
+anchor_bottom = 0.52
+offset_left = -382.4
+offset_top = -352.0
+offset_right = 383.6
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.47, 0.266333, 0.964706)
+script = ExtResource("1_8mrsl")
+
+[node name="MultPos" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.752
+anchor_right = 0.752
+offset_left = -0.0320435
+offset_right = 0.967957
+
+[node name="AddPos" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.251
+anchor_right = 0.251
+offset_left = -0.266006
+offset_right = 0.733994
+
+[node name="DeadZone" type="Sprite2D" parent="ColorRect"]
+position = Vector2(384, 768)
+
+[node name="Area2D" type="Area2D" parent="ColorRect/DeadZone"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/DeadZone/Area2D"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_om6of")
+
+[node name="Timer" type="Timer" parent="ColorRect"]
+
+[node name="AddSync" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.251
+anchor_top = 0.818
+anchor_right = 0.251
+anchor_bottom = 0.818
+offset_left = -40.266
+offset_top = -39.872
+offset_right = 39.734
+offset_bottom = 40.128
+pivot_offset = Vector2(40, 40)
+theme = ExtResource("4_galmh")
+bbcode_enabled = true
+text = "[center]A[/center]"
+
+[node name="MultSync" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.818
+anchor_right = 0.7
+anchor_bottom = 0.818
+offset_left = -0.200012
+offset_top = -39.872
+offset_right = 79.8
+offset_bottom = 40.128
+theme = ExtResource("4_galmh")
+bbcode_enabled = true
+text = "[center]D[/center]"
+
+[connection signal="timeout" from="VBoxContainer/Attack/Timer" to="ColorRect" method="_on_timerattack_timeout"]
 [connection signal="timeout" from="Boss/Timer" to="Boss" method="_on_timer_timeout"]
+[connection signal="timeout" from="Boss/TimerNull" to="Boss" method="_on_timer_null_timeout"]
+[connection signal="area_entered" from="Player/Area2D" to="ColorRect" method="_on_null_area_entered"]
+[connection signal="area_entered" from="Platform/Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Platform/Area2D" to="Player" method="_on_area_2d_area_exited"]
+[connection signal="button_down" from="Win/Button" to="ColorRect" method="_on_playagain_button_down"]
+[connection signal="timeout" from="Win/Timer" to="ColorRect" method="_on_wintimer_timeout"]
+[connection signal="button_down" from="Tip/Sound" to="ColorRect" method="_on_sound_button_down"]
+[connection signal="button_down" from="Tip/Button" to="ColorRect" method="_on_button_button_down"]
+[connection signal="area_entered" from="ColorRect/DeadZone/Area2D" to="ColorRect" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="ColorRect/Timer" to="ColorRect" method="_on_timer_timeout"]

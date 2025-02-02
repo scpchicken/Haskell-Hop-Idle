@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7r4gge1kgelv"
+path="res://.godot/imported/Mega Man 2 (NES) Music - Wily Fortress 1.mp3-17a899601ae1489ed2a43ba917d2c55c.mp3str"
+
+[deps]
+
+source_file="res://audio/Mega Man 2 (NES) Music - Wily Fortress 1.mp3"
+dest_files=["res://.godot/imported/Mega Man 2 (NES) Music - Wily Fortress 1.mp3-17a899601ae1489ed2a43ba917d2c55c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
