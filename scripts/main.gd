@@ -270,7 +270,7 @@ func _qwerty_hop():
 		#$HBoxUpgrade/PhantomHop.hide()
 
 func _boss_battle():
-	$Tip.text = "A monad is a monoid in a category of endofunctors"
+	$Tip.text = "A monad is a monoid in the category of endofunctors"
 	$Tip.show()
 	$Tip/Button.disabled = true
 	$Tip/Timer.start()

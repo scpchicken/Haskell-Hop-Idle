@@ -199,7 +199,7 @@ func _on_wintimer_timeout() -> void:
 
 
 func _on_null_area_entered(area: Area2D) -> void:
-	if LIVES > 0 and area.collision_layer == 0b11000000:
+	if WIN == false and LIVES > 0 and area.collision_layer == 0b11000000:
 		area.get_parent().queue_free()
 		LIVES -= 1
 		if LIVES >= 1:
